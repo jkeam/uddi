@@ -37,9 +37,9 @@ RUN dnf -y module enable ruby:$RUBY_VERSION && \
 # Fix Java and point to Java 21 instead of 17
 RUN ln -sf /usr/lib/jvm/java-21-openjdk/* ${HOME}/.java/current
 
-# Intall Quarkus CLI
-RUN curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/ && \
-    curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
-
 USER 10001
 
+# Intall Quarkus CLI
+RUN curl -s "https://get.sdkman.io" | bash && \
+    source "$HOME/.sdkman/bin/sdkman-init.sh" && \
+    sdk install quarkus 3.30.6

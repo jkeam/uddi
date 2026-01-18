@@ -4,7 +4,7 @@ metadata:
 components:
   - name: tools
     container:
-      image: quay.io/jkeam/uddi@sha256:af6015c8511c5cf9fc85922dd9eb4c3543c7a586eb418a0fb1c1ba9d096248da
+      image: quay.io/jkeam/uddi@sha256:3956ba8825633b34afb387075087aee069e1d181dec9b415ff5de4828eaf4d08
       env:
         - name: QUARKUS_HTTP_HOST
           value: 0.0.0.0
