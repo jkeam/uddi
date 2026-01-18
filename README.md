@@ -1,2 +1,3 @@
-# uddi
-My own custom Universal Developer Dev Space Image
+# UDDI
+
+My own custom Universal Developer Dev Space Image.

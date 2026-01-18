@@ -1,0 +1,51 @@
+schemaVersion: 2.2.2
+metadata:
+  name: uddi
+components:
+  - name: tools
+    container:
+      image: quay.io/jkeam/uddi@sha256:af6015c8511c5cf9fc85922dd9eb4c3543c7a586eb418a0fb1c1ba9d096248da
+      env:
+        - name: QUARKUS_HTTP_HOST
+          value: 0.0.0.0
+      endpoints:
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: api
+          protocol: https
+          targetPort: 8080
+          path: /api
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+      cpuLimit: '4'
+      cpuRequest: '1'
+      memoryLimit: '8G'
+      memoryRequest: '4G'
+      mountSources: true
+  - name: m2
+    volume:
+      size: 1G
+commands:
+  - id: 1-build
+    exec:
+      label: "Build"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}
+      commandLine: "./gradlew build"
+      group:
+        kind: build
+        isDefault: true
+  - id: 2-startdev
+    exec:
+      label: "Start Dev Server"
+      component: tools
+      workingDir: ${PROJECTS_ROOT}
+      commandLine: "./gradlew quarkusDev"
+      group:
+        kind: run
+        isDefault: true
+
