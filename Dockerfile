@@ -21,6 +21,7 @@ It is simple, straight-forward, and extensible."
 # Install Ruby
 RUN dnf -y module enable ruby:$RUBY_VERSION && \
     INSTALL_PKGS=" \
+    libyaml-devel \
     libffi-devel \
     ruby \
     ruby-devel \
