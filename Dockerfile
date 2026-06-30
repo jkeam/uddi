@@ -1,4 +1,4 @@
-FROM registry.redhat.io/devspaces/udi-rhel9:3.25.0-1765582207
+FROM registry.redhat.io/devspaces/udi-rhel9:3.28
 
 USER root
 
@@ -43,4 +43,4 @@ USER 10001
 # Intall Quarkus CLI
 RUN curl -s "https://get.sdkman.io" | bash && \
     source "$HOME/.sdkman/bin/sdkman-init.sh" && \
-    sdk install quarkus 3.30.6
+    sdk install quarkus 3.37.0
