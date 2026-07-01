@@ -36,7 +36,7 @@ RUN dnf -y module enable ruby:$RUBY_VERSION && \
     rpm -V ${INSTALL_PKGS}
 
 # Fix Java and point to Java 21 instead of 17
-RUN ln -sf /usr/lib/jvm/java-21-openjdk/* ${HOME}/.java/current
+RUN ln -sf /usr/lib/jvm/java-21-openjdk-21.0.11.0.10-2.el9.x86_64 ${HOME}/.java/current
 
 USER 10001
 
