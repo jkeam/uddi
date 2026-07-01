@@ -37,6 +37,8 @@ RUN dnf -y module enable ruby:$RUBY_VERSION && \
 
 # Fix Java and point to Java 21 instead of 17
 RUN ln -sf /usr/lib/jvm/java-21-openjdk-21.0.11.0.10-2.el9.x86_64 ${HOME}/.java/current
+RUN update-alternatives --set java $(update-alternatives --display java | grep 'java-21' | awk '{print $1}' | head -n 1) && \
+    update-alternatives --set javac $(update-alternatives --display javac | grep 'java-21' | awk '{print $1}' | head -n 1)
 
 USER 10001
 
